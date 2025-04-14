@@ -111,13 +111,24 @@ public class SwiftFlutterBarcodeScannerPlugin: NSObject, FlutterPlugin, ScanBarc
                                 
                             }
                         } else {
-                            let alert = UIAlertController(title: "Action needed", message: "Please grant camera permission to use barcode scanner", preferredStyle: .alert)
-                            
-                            alert.addAction(UIAlertAction(title: "Grant", style: .default, handler: { action in
-                                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
-                            }))
-                            
-                            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+                            let alert = UIAlertController(
+                                title: "Acción requerida", 
+                                message: "Por favor, concede permiso a la cámara para usar el escáner de códigos de barras", 
+                                preferredStyle: .alert
+                            )
+
+                            alert.addAction(UIAlertAction(
+                                title: "Conceder", 
+                                style: .default, 
+                                handler: { action in
+                                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                                }
+                            ))
+
+                            alert.addAction(UIAlertAction(
+                                title: "Cancelar", 
+                                style: .cancel
+                            ))
                             
                             SwiftFlutterBarcodeScannerPlugin.viewController.present(alert, animated: true)
                         }
